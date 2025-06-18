@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="HP07K_LOCAL077.ADMINISTRACIONRH_DW"
+  DTS:DTSID="{5B5822EA-189D-4C5C-8FD6-CA75728C8E21}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=HP07K\LOCAL077;Initial Catalog=ADMINISTRACIONRH_DW;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-AdminRhSSIS-{5B5822EA-189D-4C5C-8FD6-CA75728C8E21}HP07K\LOCAL077.ADMINISTRACIONRH_DW;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

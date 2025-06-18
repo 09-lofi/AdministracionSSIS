@@ -1,0 +1,3042 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/16/2025 1:35:17 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="HP07K"
+  DTS:CreatorName="HP07K\Arlette"
+  DTS:DTSID="{7B7A2F07-1401-4A54-8E76-B67F7D618851}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="3082"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="118"
+  DTS:VersionGUID="{84336992-0766-4CBD-986D-2A1FAD279F11}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8A183868-9848-48A9-972D-0748704FBCF8}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="LineageKey">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{475F2A3C-52E6-4010-A8E7-CF45AC584A40}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="LoadDate">
+      <DTS:VariableValue
+        DTS:DataType="7">6/16/2010</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BCA1FE0D-112D-4FCE-BA89-871EB2E7D87F}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LoadType">
+      <DTS:VariableValue
+        DTS:DataType="8">F</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{478064BE-3D32-46F1-961E-75688E256424}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="PreviouLoadedDate">
+      <DTS:VariableValue
+        DTS:DataType="7">6/16/2011</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{290CD06F-26A1-4BFA-8177-D153E382C9EE}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TableName">
+      <DTS:VariableValue
+        DTS:DataType="8">DimFecha</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Carga de Dimension Empleado"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Contenedor de secuencias"
+      DTS:DTSID="{A7912AE5-116D-4163-94A1-3D8640718AB2}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Carga de Dimension Empleado">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Carga de Dimension Empleado\Asignar Nombre de Tabla"
+          DTS:CreationName="Microsoft.ExpressionTask"
+          DTS:Description="Tarea de expresión"
+          DTS:DTSID="{164808DD-9AFB-41C5-B0CE-873B016202BA}"
+          DTS:ExecutableType="Microsoft.ExpressionTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Asignar Nombre de Tabla"
+          DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExpressionTask
+              Expression="@[User::TableName] = &quot;Dim_Empleado&quot;" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Carga de Dimension Empleado\DF Probar Staging"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Tarea Flujo de datos"
+          DTS:DTSID="{6DEC5880-277B-430D-B1C8-B5349140A428}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DF Probar Staging"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+                  description="Destino de OLE DB"
+                  name="Destino de OLE DB"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                      name="OpenRowset">[dbo].[Staging_Empleado]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="Comando SQL para ejecutar."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                      name="FastLoadOptions"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Connections[OleDbConnection]"
+                      connectionManagerID="{5B5822EA-189D-4C5C-8FD6-CA75728C8E21}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[HP07K_LOCAL077.ADMINISTRACIONRH_DW]"
+                      description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]"
+                      errorOrTruncationOperation="Insertar"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Entrada de destino de OLE DB">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[_SourceEmpleadosKey]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="_SourceEmpleadosKey"
+                          externalMetadataColumnId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[_SourceEmpleadosKey]"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[_SourceEmpleadosKey]" />
+                        <inputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[NumeroCedula]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="16"
+                          cachedName="NumeroCedula"
+                          externalMetadataColumnId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[NumeroCedula]"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[NumeroCedula]" />
+                        <inputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[NumeroINSS]"
+                          cachedDataType="i4"
+                          cachedName="NumeroINSS"
+                          externalMetadataColumnId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[NumeroINSS]"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[NumeroINSS]" />
+                        <inputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[PrimerNombre]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="PrimerNombre"
+                          externalMetadataColumnId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[PrimerNombre]"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[PrimerNombre]" />
+                        <inputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[SegundoNombre]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="SegundoNombre"
+                          externalMetadataColumnId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[SegundoNombre]"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[SegundoNombre]" />
+                        <inputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[PrimerApellido]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="PrimerApellido"
+                          externalMetadataColumnId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[PrimerApellido]"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[PrimerApellido]" />
+                        <inputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[SegundoApellido]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="SegundoApellido"
+                          externalMetadataColumnId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[SegundoApellido]"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[SegundoApellido]" />
+                        <inputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[Direccion]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="30"
+                          cachedName="Direccion"
+                          externalMetadataColumnId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Direccion]"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[Direccion]" />
+                        <inputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[Sexo]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="Sexo"
+                          externalMetadataColumnId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Sexo]"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[Sexo]" />
+                        <inputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[Telefono]"
+                          cachedDataType="i4"
+                          cachedName="Telefono"
+                          externalMetadataColumnId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Telefono]"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[Telefono]" />
+                        <inputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[Email]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Email"
+                          externalMetadataColumnId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Email]"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[Email]" />
+                        <inputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[ValidFrom]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ValidFrom"
+                          externalMetadataColumnId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[ValidFrom]"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[ValidFrom]" />
+                        <inputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[ValidTo]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ValidTo"
+                          externalMetadataColumnId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[ValidTo]"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[ValidTo]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[EmpleadoKey]"
+                          dataType="i4"
+                          name="EmpleadoKey" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[_SourceEmpleadosKey]"
+                          dataType="wstr"
+                          length="50"
+                          name="_SourceEmpleadosKey" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[NumeroCedula]"
+                          codePage="1252"
+                          dataType="str"
+                          length="16"
+                          name="NumeroCedula" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[NumeroINSS]"
+                          dataType="i4"
+                          name="NumeroINSS" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[PrimerNombre]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="PrimerNombre" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[SegundoNombre]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="SegundoNombre" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[PrimerApellido]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="PrimerApellido" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[SegundoApellido]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="SegundoApellido" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Direccion]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="Direccion" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Sexo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="Sexo" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Telefono]"
+                          dataType="i4"
+                          name="Telefono" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Email]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Email" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[ValidFrom]"
+                          dataType="dbTimeStamp"
+                          name="ValidFrom" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[ValidTo]"
+                          dataType="dbTimeStamp"
+                          name="ValidTo" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Salida de error de destino de OLE DB"
+                      synchronousInputId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+                  description="Origen de OLE DB"
+                  name="Origen de OLE DB"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="Comando SQL para ejecutar."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXEC Load_Staging_Empleado ?, ?
+WITH RESULT SETS
+(
+    (
+        [EmpleadoKey] [int], 
+	[_SourceEmpleadosKey] [nvarchar](50), 
+	[NumeroCedula] [char](16), 
+	[NumeroINSS] [int], 
+	[PrimerNombre] [varchar](20), 
+	[SegundoNombre] [varchar](20), 
+	[PrimerApellido] [varchar](20), 
+	[SegundoApellido] [varchar](20), 
+	[Direccion] [varchar](30), 
+	[Sexo] [char](1), 
+	[Telefono] [int], 
+	[Email] [varchar](50), 
+	[ValidFrom] [datetime], 
+	[ValidTo] [datetime]
+    )
+)</property>
+                    <property
+                      dataType="System.String"
+                      description="Variable que contiene el comando SQL para ejecutar."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="Asignaciones entre los parámetros del comando SQL y las variables."
+                      name="ParameterMapping">"@LastLoadDate:Input",{478064BE-3D32-46F1-961E-75688E256424};"@NewLoadDate:Input",{475F2A3C-52E6-4010-A8E7-CF45AC584A40};</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Connections[OleDbConnection]"
+                      connectionManagerID="{BA8B84AF-8B76-4B6D-8CFF-4FDBE8F84DDF}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[HP07K_LOCAL077.ADMINISTRACION_RH]"
+                      description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB]"
+                      name="Salida de origen de OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[EmpleadoKey]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[EmpleadoKey]"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[EmpleadoKey]"
+                          name="EmpleadoKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[_SourceEmpleadosKey]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[_SourceEmpleadosKey]"
+                          length="50"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[_SourceEmpleadosKey]"
+                          name="_SourceEmpleadosKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[NumeroCedula]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[NumeroCedula]"
+                          length="16"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[NumeroCedula]"
+                          name="NumeroCedula"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[NumeroINSS]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[NumeroINSS]"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[NumeroINSS]"
+                          name="NumeroINSS"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[PrimerNombre]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[PrimerNombre]"
+                          length="20"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[PrimerNombre]"
+                          name="PrimerNombre"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[SegundoNombre]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[SegundoNombre]"
+                          length="20"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[SegundoNombre]"
+                          name="SegundoNombre"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[PrimerApellido]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[PrimerApellido]"
+                          length="20"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[PrimerApellido]"
+                          name="PrimerApellido"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[SegundoApellido]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[SegundoApellido]"
+                          length="20"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[SegundoApellido]"
+                          name="SegundoApellido"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[Direccion]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[Direccion]"
+                          length="30"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[Direccion]"
+                          name="Direccion"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[Sexo]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[Sexo]"
+                          length="1"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[Sexo]"
+                          name="Sexo"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[Telefono]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[Telefono]"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[Telefono]"
+                          name="Telefono"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[Email]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[Email]"
+                          length="50"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[Email]"
+                          name="Email"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[ValidFrom]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[ValidFrom]"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[ValidFrom]"
+                          name="ValidFrom"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[ValidTo]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[ValidTo]"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[ValidTo]"
+                          name="ValidTo"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[EmpleadoKey]"
+                          dataType="i4"
+                          name="EmpleadoKey" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[_SourceEmpleadosKey]"
+                          dataType="wstr"
+                          length="50"
+                          name="_SourceEmpleadosKey" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[NumeroCedula]"
+                          codePage="1252"
+                          dataType="str"
+                          length="16"
+                          name="NumeroCedula" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[NumeroINSS]"
+                          dataType="i4"
+                          name="NumeroINSS" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[PrimerNombre]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="PrimerNombre" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[SegundoNombre]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="SegundoNombre" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[PrimerApellido]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="PrimerApellido" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[SegundoApellido]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="SegundoApellido" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[Direccion]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="Direccion" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[Sexo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="Sexo" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[Telefono]"
+                          dataType="i4"
+                          name="Telefono" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[Email]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Email" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[ValidFrom]"
+                          dataType="dbTimeStamp"
+                          name="ValidFrom" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[ValidTo]"
+                          dataType="dbTimeStamp"
+                          name="ValidTo" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB]"
+                      isErrorOut="true"
+                      name="Salida de error de origen de OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[EmpleadoKey]"
+                          dataType="i4"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[EmpleadoKey]"
+                          name="EmpleadoKey" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[_SourceEmpleadosKey]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[_SourceEmpleadosKey]"
+                          name="_SourceEmpleadosKey" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[NumeroCedula]"
+                          codePage="1252"
+                          dataType="str"
+                          length="16"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[NumeroCedula]"
+                          name="NumeroCedula" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[NumeroINSS]"
+                          dataType="i4"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[NumeroINSS]"
+                          name="NumeroINSS" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[PrimerNombre]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[PrimerNombre]"
+                          name="PrimerNombre" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[SegundoNombre]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[SegundoNombre]"
+                          name="SegundoNombre" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[PrimerApellido]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[PrimerApellido]"
+                          name="PrimerApellido" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[SegundoApellido]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[SegundoApellido]"
+                          name="SegundoApellido" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[Direccion]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[Direccion]"
+                          name="Direccion" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[Sexo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[Sexo]"
+                          name="Sexo" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[Telefono]"
+                          dataType="i4"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[Telefono]"
+                          name="Telefono" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[Email]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[Email]"
+                          name="Email" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ValidFrom]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ValidFrom]"
+                          name="ValidFrom" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ValidTo]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ValidTo]"
+                          name="ValidTo" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Carga de Dimension Empleado\DF Probar Staging.Paths[Salida de origen de OLE DB]"
+                  endId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]"
+                  name="Salida de origen de OLE DB"
+                  startId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Carga de Dimension Empleado\Obtener la Fecha de Carga"
+          DTS:CreationName="Microsoft.ExpressionTask"
+          DTS:Description="Tarea de expresión"
+          DTS:DTSID="{C49F2A13-3AE0-4AE3-AF94-E773819A6225}"
+          DTS:ExecutableType="Microsoft.ExpressionTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Obtener la Fecha de Carga"
+          DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExpressionTask
+              Expression="@[User::LoadDate]=GETDATE()" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Carga de Dimension Empleado\SQL Migrate Staging to Dimension"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Tarea Ejecutar SQL"
+          DTS:DTSID="{64CBC50F-724E-4915-AFD7-DCFF3DA36A9B}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Migrate Staging to Dimension"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{5B5822EA-189D-4C5C-8FD6-CA75728C8E21}"
+              SQLTask:SqlStatementSource="EXEC Load_DimEmpleado" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Carga de Dimension Empleado\SQL Obtener la fecha de carga previa"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Tarea Ejecutar SQL"
+          DTS:DTSID="{73B21CF3-107D-41C1-AE5F-3370B81CD748}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Obtener la fecha de carga previa"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{5B5822EA-189D-4C5C-8FD6-CA75728C8E21}"
+              SQLTask:SqlStatementSource="EXEC [int].[Get_LastLoadedDate] ?&#xA;"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="LoadDate"
+                SQLTask:DtsVariableName="User::PreviouLoadedDate" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::TableName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Carga de Dimension Empleado\SQL Truncate Staging_Empleado"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Tarea Ejecutar SQL"
+          DTS:DTSID="{B9206848-C5C0-41BF-AB84-8A3B6F8BE5FA}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Truncate Staging_Empleado"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{5B5822EA-189D-4C5C-8FD6-CA75728C8E21}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE Staging_Empleado" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Carga de Dimension Empleado\SQL Update Lineage Table"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Tarea Ejecutar SQL"
+          DTS:DTSID="{AADE8465-AAAF-498B-8424-902E557BFBC9}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Update Lineage Table"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{5B5822EA-189D-4C5C-8FD6-CA75728C8E21}"
+              SQLTask:SqlStatementSource="EXEC [int].[Get_LineageKey] ?, ?, ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::LoadType"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::TableName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="User::PreviouLoadedDate"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="7"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Carga de Dimension Empleado.PrecedenceConstraints[Restricción]"
+          DTS:CreationName=""
+          DTS:DTSID="{C2EC8D64-0E7E-414F-9DDB-B3C9C3260BCE}"
+          DTS:From="Package\Carga de Dimension Empleado\Asignar Nombre de Tabla"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restricción"
+          DTS:To="Package\Carga de Dimension Empleado\Obtener la Fecha de Carga" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Carga de Dimension Empleado.PrecedenceConstraints[Restricción 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{BFB03D48-DB82-4463-B717-4F5A648D476B}"
+          DTS:From="Package\Carga de Dimension Empleado\Obtener la Fecha de Carga"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restricción 1"
+          DTS:To="Package\Carga de Dimension Empleado\SQL Update Lineage Table" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Carga de Dimension Empleado.PrecedenceConstraints[Restricción 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{91DDBAA9-F324-4E01-86C7-055DB0C166AA}"
+          DTS:From="Package\Carga de Dimension Empleado\SQL Update Lineage Table"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restricción 2"
+          DTS:To="Package\Carga de Dimension Empleado\SQL Truncate Staging_Empleado" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Carga de Dimension Empleado.PrecedenceConstraints[Restricción 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{CA184AFD-DA23-489D-B6DC-678B09A930E9}"
+          DTS:From="Package\Carga de Dimension Empleado\SQL Truncate Staging_Empleado"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restricción 3"
+          DTS:To="Package\Carga de Dimension Empleado\SQL Obtener la fecha de carga previa" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Carga de Dimension Empleado.PrecedenceConstraints[Restricción 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{08933C06-676D-4719-A087-E3CCFDB85BAC}"
+          DTS:From="Package\Carga de Dimension Empleado\SQL Obtener la fecha de carga previa"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restricción 4"
+          DTS:To="Package\Carga de Dimension Empleado\DF Probar Staging" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Carga de Dimension Empleado.PrecedenceConstraints[Restricción 5]"
+          DTS:CreationName=""
+          DTS:DTSID="{0287B2E5-81E9-4340-8135-BA1574DF58F0}"
+          DTS:From="Package\Carga de Dimension Empleado\DF Probar Staging"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restricción 5"
+          DTS:To="Package\Carga de Dimension Empleado\SQL Migrate Staging to Dimension" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Carga de Dimension Permiso"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Contenedor de secuencias"
+      DTS:DTSID="{CA059732-4C29-4235-B969-D342E82C581D}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Carga de Dimension Permiso">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Carga de Dimension Permiso\Asignar Nombre de Tabla"
+          DTS:CreationName="Microsoft.ExpressionTask"
+          DTS:Description="Tarea de expresión"
+          DTS:DTSID="{33c7ccd9-afdd-4cf6-a680-91fd655a87b2}"
+          DTS:ExecutableType="Microsoft.ExpressionTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Asignar Nombre de Tabla"
+          DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExpressionTask
+              Expression="@[User::TableName] = &quot;Dim_Empleado&quot;" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Carga de Dimension Permiso\DF Probar Staging"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Tarea Flujo de datos"
+          DTS:DTSID="{ECA7E1AC-7823-44DF-81C0-E626274EA801}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DF Probar Staging"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Carga de Dimension Permiso\DF Probar Staging\Destino de OLE DB"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+                  description="Destino de OLE DB"
+                  name="Destino de OLE DB"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                      name="OpenRowset">[dbo].[Staging_Permiso]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="Comando SQL para ejecutar."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Carga de Dimension Permiso\DF Probar Staging\Destino de OLE DB.Connections[OleDbConnection]"
+                      connectionManagerID="{5B5822EA-189D-4C5C-8FD6-CA75728C8E21}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[HP07K_LOCAL077.ADMINISTRACIONRH_DW]"
+                      description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Carga de Dimension Permiso\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]"
+                      errorOrTruncationOperation="Insertar"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Entrada de destino de OLE DB">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Carga de Dimension Permiso\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[_SourcePermisosKey]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="_SourcePermisosKey"
+                          externalMetadataColumnId="Package\Carga de Dimension Permiso\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[_SourcePermisosKey]"
+                          lineageId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[_SourcePermisosKey]" />
+                        <inputColumn
+                          refId="Package\Carga de Dimension Permiso\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[NombrePermiso]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="NombrePermiso"
+                          externalMetadataColumnId="Package\Carga de Dimension Permiso\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[NombrePermiso]"
+                          lineageId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[NombrePermiso]" />
+                        <inputColumn
+                          refId="Package\Carga de Dimension Permiso\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[ValidFrom]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ValidFrom"
+                          externalMetadataColumnId="Package\Carga de Dimension Permiso\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[ValidFrom]"
+                          lineageId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[ValidFrom]" />
+                        <inputColumn
+                          refId="Package\Carga de Dimension Permiso\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[ValidTo]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ValidTo"
+                          externalMetadataColumnId="Package\Carga de Dimension Permiso\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[ValidTo]"
+                          lineageId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[ValidTo]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Permiso\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[PermisoKey]"
+                          dataType="i4"
+                          name="PermisoKey" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Permiso\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[_SourcePermisosKey]"
+                          dataType="i4"
+                          name="_SourcePermisosKey" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Permiso\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[NombrePermiso]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="NombrePermiso" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Permiso\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[ValidFrom]"
+                          dataType="dbTimeStamp"
+                          name="ValidFrom" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Permiso\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[ValidTo]"
+                          dataType="dbTimeStamp"
+                          name="ValidTo" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Carga de Dimension Permiso\DF Probar Staging\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Salida de error de destino de OLE DB"
+                      synchronousInputId="Package\Carga de Dimension Permiso\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Carga de Dimension Permiso\DF Probar Staging\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Carga de Dimension Permiso\DF Probar Staging\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Permiso\DF Probar Staging\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Carga de Dimension Permiso\DF Probar Staging\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+                  description="Origen de OLE DB"
+                  name="Origen de OLE DB"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="Comando SQL para ejecutar."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXEC Load_Staging_Permiso ?,?
+WITH RESULT SETS
+(
+    (
+        [PermisoKey] [int], 
+        [_SourcePermisosKey] [nvarchar](50), 
+        [NombrePermiso] [varchar](50), 
+        [ValidFrom] [datetime], 
+        [ValidTo] [datetime]
+    )
+)</property>
+                    <property
+                      dataType="System.String"
+                      description="Variable que contiene el comando SQL para ejecutar."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="Asignaciones entre los parámetros del comando SQL y las variables."
+                      name="ParameterMapping">"@LastLoadDate:Input",{478064BE-3D32-46F1-961E-75688E256424};"@NewLoadDate:Input",{475F2A3C-52E6-4010-A8E7-CF45AC584A40};</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Connections[OleDbConnection]"
+                      connectionManagerID="{BA8B84AF-8B76-4B6D-8CFF-4FDBE8F84DDF}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[HP07K_LOCAL077.ADMINISTRACION_RH]"
+                      description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB]"
+                      name="Salida de origen de OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[PermisoKey]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[PermisoKey]"
+                          lineageId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[PermisoKey]"
+                          name="PermisoKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[_SourcePermisosKey]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[_SourcePermisosKey]"
+                          length="50"
+                          lineageId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[_SourcePermisosKey]"
+                          name="_SourcePermisosKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[NombrePermiso]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[NombrePermiso]"
+                          length="50"
+                          lineageId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[NombrePermiso]"
+                          name="NombrePermiso"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[ValidFrom]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[ValidFrom]"
+                          lineageId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[ValidFrom]"
+                          name="ValidFrom"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[ValidTo]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[ValidTo]"
+                          lineageId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[ValidTo]"
+                          name="ValidTo"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[PermisoKey]"
+                          dataType="i4"
+                          name="PermisoKey" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[_SourcePermisosKey]"
+                          dataType="wstr"
+                          length="50"
+                          name="_SourcePermisosKey" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[NombrePermiso]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="NombrePermiso" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[ValidFrom]"
+                          dataType="dbTimeStamp"
+                          name="ValidFrom" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[ValidTo]"
+                          dataType="dbTimeStamp"
+                          name="ValidTo" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB]"
+                      isErrorOut="true"
+                      name="Salida de error de origen de OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[PermisoKey]"
+                          dataType="i4"
+                          lineageId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[PermisoKey]"
+                          name="PermisoKey" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[_SourcePermisosKey]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[_SourcePermisosKey]"
+                          name="_SourcePermisosKey" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[NombrePermiso]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[NombrePermiso]"
+                          name="NombrePermiso" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ValidFrom]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ValidFrom]"
+                          name="ValidFrom" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ValidTo]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ValidTo]"
+                          name="ValidTo" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Carga de Dimension Permiso\DF Probar Staging.Paths[Salida de origen de OLE DB]"
+                  endId="Package\Carga de Dimension Permiso\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]"
+                  name="Salida de origen de OLE DB"
+                  startId="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Carga de Dimension Permiso\Obtener la Fecha de Carga"
+          DTS:CreationName="Microsoft.ExpressionTask"
+          DTS:Description="Tarea de expresión"
+          DTS:DTSID="{365955cf-77c7-44c4-9d03-b5a657dbb65b}"
+          DTS:ExecutableType="Microsoft.ExpressionTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Obtener la Fecha de Carga"
+          DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExpressionTask
+              Expression="@[User::LoadDate]=GETDATE()" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Carga de Dimension Permiso\SQL Migrate Staging to Dimension"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Tarea Ejecutar SQL"
+          DTS:DTSID="{396f2b1b-b959-4be6-9018-28b6e80b1363}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Migrate Staging to Dimension"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{5B5822EA-189D-4C5C-8FD6-CA75728C8E21}"
+              SQLTask:SqlStatementSource="EXEC Load_DimPermiso" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Carga de Dimension Permiso\SQL Obtener la fecha de carga previa"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Tarea Ejecutar SQL"
+          DTS:DTSID="{7b55f0dd-2b37-448c-8062-7b4ecf4d2164}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Obtener la fecha de carga previa"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{5B5822EA-189D-4C5C-8FD6-CA75728C8E21}"
+              SQLTask:SqlStatementSource="EXEC [int].[Get_LastLoadedDate] ?&#xA;"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="LoadDate"
+                SQLTask:DtsVariableName="User::PreviouLoadedDate" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::TableName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Carga de Dimension Permiso\SQL Truncate Staging_Permiso"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Tarea Ejecutar SQL"
+          DTS:DTSID="{4bc4769d-a633-48f5-8de6-0ec99bf001a9}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Truncate Staging_Permiso"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{5B5822EA-189D-4C5C-8FD6-CA75728C8E21}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE Staging_Permiso" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Carga de Dimension Permiso\SQL Update Lineage Table"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Tarea Ejecutar SQL"
+          DTS:DTSID="{54947ded-9a05-446c-8103-757c9771a568}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Update Lineage Table"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{5B5822EA-189D-4C5C-8FD6-CA75728C8E21}"
+              SQLTask:SqlStatementSource="EXEC [int].[Get_LineageKey] ?, ?, ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::LoadType"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::TableName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="User::PreviouLoadedDate"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="7"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Carga de Dimension Permiso.PrecedenceConstraints[Restricción]"
+          DTS:CreationName=""
+          DTS:DTSID="{33774370-21dd-4307-94d5-21b6949390d7}"
+          DTS:From="Package\Carga de Dimension Permiso\Asignar Nombre de Tabla"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restricción"
+          DTS:To="Package\Carga de Dimension Permiso\Obtener la Fecha de Carga" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Carga de Dimension Permiso.PrecedenceConstraints[Restricción 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{d63c5df6-c186-446c-a675-cfcc314e176b}"
+          DTS:From="Package\Carga de Dimension Permiso\Obtener la Fecha de Carga"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restricción 1"
+          DTS:To="Package\Carga de Dimension Permiso\SQL Update Lineage Table" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Carga de Dimension Permiso.PrecedenceConstraints[Restricción 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{9A8F4B98-5310-47E7-9F72-1AEDD167EFAC}"
+          DTS:From="Package\Carga de Dimension Permiso\SQL Update Lineage Table"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restricción 2"
+          DTS:To="Package\Carga de Dimension Permiso\SQL Truncate Staging_Permiso" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Carga de Dimension Permiso.PrecedenceConstraints[Restricción 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{2C907751-A4E2-46AD-95A8-EE50BCCD67E1}"
+          DTS:From="Package\Carga de Dimension Permiso\SQL Truncate Staging_Permiso"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restricción 3"
+          DTS:To="Package\Carga de Dimension Permiso\SQL Obtener la fecha de carga previa" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Carga de Dimension Permiso.PrecedenceConstraints[Restricción 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{659BCA75-02F5-4044-B493-919C696E952C}"
+          DTS:From="Package\Carga de Dimension Permiso\SQL Obtener la fecha de carga previa"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restricción 4"
+          DTS:To="Package\Carga de Dimension Permiso\DF Probar Staging" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Carga de Dimension Permiso.PrecedenceConstraints[Restricción 5]"
+          DTS:CreationName=""
+          DTS:DTSID="{FAF54CA2-47CA-4E1C-8EF6-A561BA4B7A53}"
+          DTS:From="Package\Carga de Dimension Permiso\DF Probar Staging"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restricción 5"
+          DTS:To="Package\Carga de Dimension Permiso\SQL Migrate Staging to Dimension" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Carga de Tabla de Hechos"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Contenedor de secuencias"
+      DTS:DTSID="{A5109AAE-0266-4E4A-BA2C-D8F6B8CA0986}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Carga de Tabla de Hechos">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Carga de Tabla de Hechos\Asignar Nombre de Tabla"
+          DTS:CreationName="Microsoft.ExpressionTask"
+          DTS:Description="Tarea de expresión"
+          DTS:DTSID="{bcf5e8d6-9fe9-4c23-8a7a-e017c14a6ec7}"
+          DTS:ExecutableType="Microsoft.ExpressionTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Asignar Nombre de Tabla"
+          DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExpressionTask
+              Expression="@[User::TableName] = &quot;Dim_Empleado&quot;" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Carga de Tabla de Hechos\DF Probar Staging"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Tarea Flujo de datos"
+          DTS:DTSID="{069424A6-2E6F-4E48-972A-E382F97909DF}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DF Probar Staging"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+                  description="Destino de OLE DB"
+                  name="Destino de OLE DB"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                      name="OpenRowset">[dbo].[Staging_FactPermisos]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="Comando SQL para ejecutar."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB.Connections[OleDbConnection]"
+                      connectionManagerID="{5B5822EA-189D-4C5C-8FD6-CA75728C8E21}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[HP07K_LOCAL077.ADMINISTRACIONRH_DW]"
+                      description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]"
+                      errorOrTruncationOperation="Insertar"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Entrada de destino de OLE DB">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[_SourceFactPermisoKey]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="_SourceFactPermisoKey"
+                          externalMetadataColumnId="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[_SourceFactPermisoKey]"
+                          lineageId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[_SourceFactPermisoKey]" />
+                        <inputColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[FechaInicio]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="FechaInicio"
+                          externalMetadataColumnId="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[FechaInicio]"
+                          lineageId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[FechaInicio]" />
+                        <inputColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[FechaFin]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="FechaFin"
+                          externalMetadataColumnId="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[FechaFin]"
+                          lineageId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[FechaFin]" />
+                        <inputColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[_SourceEmpleadoKey]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="_SourceEmpleadoKey"
+                          externalMetadataColumnId="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[_SourceEmpleadoKey]"
+                          lineageId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[_SourceEmpleadoKey]" />
+                        <inputColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[_SourcePermisosKey]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="_SourcePermisosKey"
+                          externalMetadataColumnId="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[_SourcePermisosKey]"
+                          lineageId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[_SourcePermisosKey]" />
+                        <inputColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[DuracionDias]"
+                          cachedDataType="i4"
+                          cachedName="DuracionDias"
+                          externalMetadataColumnId="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[DuracionDias]"
+                          lineageId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[DuracionDias]" />
+                        <inputColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[ValidFrom]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ValidFrom"
+                          externalMetadataColumnId="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[ValidFrom]"
+                          lineageId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[ValidFrom]" />
+                        <inputColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[ValidTo]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ValidTo"
+                          externalMetadataColumnId="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[ValidTo]"
+                          lineageId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[ValidTo]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[PermisoKeyFact]"
+                          dataType="i4"
+                          name="PermisoKeyFact" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[_SourceFactPermisoKey]"
+                          dataType="wstr"
+                          length="50"
+                          name="_SourceFactPermisoKey" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[FechaInicio]"
+                          dataType="dbTimeStamp"
+                          name="FechaInicio" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[FechaFin]"
+                          dataType="dbTimeStamp"
+                          name="FechaFin" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[_SourceEmpleadoKey]"
+                          dataType="wstr"
+                          length="50"
+                          name="_SourceEmpleadoKey" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[_SourcePermisosKey]"
+                          dataType="wstr"
+                          length="50"
+                          name="_SourcePermisosKey" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[DuracionDias]"
+                          dataType="i4"
+                          name="DuracionDias" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[ValidFrom]"
+                          dataType="dbTimeStamp"
+                          name="ValidFrom" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[ValidTo]"
+                          dataType="dbTimeStamp"
+                          name="ValidTo" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Salida de error de destino de OLE DB"
+                      synchronousInputId="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+                  description="Origen de OLE DB"
+                  name="Origen de OLE DB"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="Comando SQL para ejecutar."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXEC Load_Staging_FactPermisos ?,?
+WITH RESULT SETS
+(
+    (
+        [PermisoKeyFact] [int], 
+
+[_SourceFactPermisoKey] [nvarchar](50), 
+
+[FechaInicio] [datetime], 
+
+[FechaFin] [datetime], 
+
+[_SourceEmpleadoKey] [nvarchar](50), 
+
+[_SourcePermisosKey] [nvarchar](50), 
+
+[DuracionDias] [int], 
+
+[ValidFrom] [datetime],
+ 
+[ValidTo] [datetime]
+    )
+)</property>
+                    <property
+                      dataType="System.String"
+                      description="Variable que contiene el comando SQL para ejecutar."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="Asignaciones entre los parámetros del comando SQL y las variables."
+                      name="ParameterMapping">"@LastLoadDate:Input",{478064BE-3D32-46F1-961E-75688E256424};"@NewLoadDate:Input",{475F2A3C-52E6-4010-A8E7-CF45AC584A40};</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Connections[OleDbConnection]"
+                      connectionManagerID="{BA8B84AF-8B76-4B6D-8CFF-4FDBE8F84DDF}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[HP07K_LOCAL077.ADMINISTRACION_RH]"
+                      description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB]"
+                      name="Salida de origen de OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[PermisoKeyFact]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[PermisoKeyFact]"
+                          lineageId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[PermisoKeyFact]"
+                          name="PermisoKeyFact"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[_SourceFactPermisoKey]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[_SourceFactPermisoKey]"
+                          length="50"
+                          lineageId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[_SourceFactPermisoKey]"
+                          name="_SourceFactPermisoKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[FechaInicio]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[FechaInicio]"
+                          lineageId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[FechaInicio]"
+                          name="FechaInicio"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[FechaFin]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[FechaFin]"
+                          lineageId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[FechaFin]"
+                          name="FechaFin"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[_SourceEmpleadoKey]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[_SourceEmpleadoKey]"
+                          length="50"
+                          lineageId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[_SourceEmpleadoKey]"
+                          name="_SourceEmpleadoKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[_SourcePermisosKey]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[_SourcePermisosKey]"
+                          length="50"
+                          lineageId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[_SourcePermisosKey]"
+                          name="_SourcePermisosKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[DuracionDias]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[DuracionDias]"
+                          lineageId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[DuracionDias]"
+                          name="DuracionDias"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[ValidFrom]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[ValidFrom]"
+                          lineageId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[ValidFrom]"
+                          name="ValidFrom"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[ValidTo]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[ValidTo]"
+                          lineageId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[ValidTo]"
+                          name="ValidTo"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[PermisoKeyFact]"
+                          dataType="i4"
+                          name="PermisoKeyFact" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[_SourceFactPermisoKey]"
+                          dataType="wstr"
+                          length="50"
+                          name="_SourceFactPermisoKey" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[FechaInicio]"
+                          dataType="dbTimeStamp"
+                          name="FechaInicio" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[FechaFin]"
+                          dataType="dbTimeStamp"
+                          name="FechaFin" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[_SourceEmpleadoKey]"
+                          dataType="wstr"
+                          length="50"
+                          name="_SourceEmpleadoKey" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[_SourcePermisosKey]"
+                          dataType="wstr"
+                          length="50"
+                          name="_SourcePermisosKey" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[DuracionDias]"
+                          dataType="i4"
+                          name="DuracionDias" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[ValidFrom]"
+                          dataType="dbTimeStamp"
+                          name="ValidFrom" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[ValidTo]"
+                          dataType="dbTimeStamp"
+                          name="ValidTo" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB]"
+                      isErrorOut="true"
+                      name="Salida de error de origen de OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[PermisoKeyFact]"
+                          dataType="i4"
+                          lineageId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[PermisoKeyFact]"
+                          name="PermisoKeyFact" />
+                        <outputColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[_SourceFactPermisoKey]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[_SourceFactPermisoKey]"
+                          name="_SourceFactPermisoKey" />
+                        <outputColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[FechaInicio]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[FechaInicio]"
+                          name="FechaInicio" />
+                        <outputColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[FechaFin]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[FechaFin]"
+                          name="FechaFin" />
+                        <outputColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[_SourceEmpleadoKey]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[_SourceEmpleadoKey]"
+                          name="_SourceEmpleadoKey" />
+                        <outputColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[_SourcePermisosKey]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[_SourcePermisosKey]"
+                          name="_SourcePermisosKey" />
+                        <outputColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[DuracionDias]"
+                          dataType="i4"
+                          lineageId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[DuracionDias]"
+                          name="DuracionDias" />
+                        <outputColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ValidFrom]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ValidFrom]"
+                          name="ValidFrom" />
+                        <outputColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ValidTo]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ValidTo]"
+                          name="ValidTo" />
+                        <outputColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Carga de Tabla de Hechos\DF Probar Staging.Paths[Salida de origen de OLE DB]"
+                  endId="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]"
+                  name="Salida de origen de OLE DB"
+                  startId="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Carga de Tabla de Hechos\Obtener la Fecha de Carga"
+          DTS:CreationName="Microsoft.ExpressionTask"
+          DTS:Description="Tarea de expresión"
+          DTS:DTSID="{9b9de806-b5c7-48fc-b047-08e400bf58e9}"
+          DTS:ExecutableType="Microsoft.ExpressionTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Obtener la Fecha de Carga"
+          DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExpressionTask
+              Expression="@[User::LoadDate]=GETDATE()" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Carga de Tabla de Hechos\SQL Migrate Staging to Dimension"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Tarea Ejecutar SQL"
+          DTS:DTSID="{7546c689-be34-4e91-99ae-9b5f86d487e3}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Migrate Staging to Dimension"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{5B5822EA-189D-4C5C-8FD6-CA75728C8E21}"
+              SQLTask:SqlStatementSource="EXEC Load_FactPermisos" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Carga de Tabla de Hechos\SQL Obtener la fecha de carga previa"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Tarea Ejecutar SQL"
+          DTS:DTSID="{6a53c439-2af7-4887-b82d-4254e0d9fdf7}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Obtener la fecha de carga previa"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{5B5822EA-189D-4C5C-8FD6-CA75728C8E21}"
+              SQLTask:SqlStatementSource="EXEC [int].[Get_LastLoadedDate] ?&#xA;"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="LoadDate"
+                SQLTask:DtsVariableName="User::PreviouLoadedDate" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::TableName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Carga de Tabla de Hechos\SQL Truncate Staging_Permiso"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Tarea Ejecutar SQL"
+          DTS:DTSID="{4bd95322-e508-45e6-b619-f25d01b58065}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Truncate Staging_Permiso"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{5B5822EA-189D-4C5C-8FD6-CA75728C8E21}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE Staging_Permiso" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Carga de Tabla de Hechos\SQL Update Lineage Table"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Tarea Ejecutar SQL"
+          DTS:DTSID="{c7a8899a-1147-462c-92ea-bd348e68d4e3}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Update Lineage Table"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{5B5822EA-189D-4C5C-8FD6-CA75728C8E21}"
+              SQLTask:SqlStatementSource="EXEC [int].[Get_LineageKey] ?, ?, ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::LoadType"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::TableName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="User::PreviouLoadedDate"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="7"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Carga de Tabla de Hechos.PrecedenceConstraints[Restricción]"
+          DTS:CreationName=""
+          DTS:DTSID="{64BB170B-1C96-48E4-B710-33B20600B5C7}"
+          DTS:From="Package\Carga de Tabla de Hechos\Asignar Nombre de Tabla"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restricción"
+          DTS:To="Package\Carga de Tabla de Hechos\Obtener la Fecha de Carga" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Carga de Tabla de Hechos.PrecedenceConstraints[Restricción 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{32A22ED4-0EE0-49C5-8994-A1DFFC595609}"
+          DTS:From="Package\Carga de Tabla de Hechos\Obtener la Fecha de Carga"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restricción 1"
+          DTS:To="Package\Carga de Tabla de Hechos\SQL Update Lineage Table" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Carga de Tabla de Hechos.PrecedenceConstraints[Restricción 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{97F3C41B-0E7B-459B-9D96-42CE8FABAC28}"
+          DTS:From="Package\Carga de Tabla de Hechos\SQL Update Lineage Table"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restricción 2"
+          DTS:To="Package\Carga de Tabla de Hechos\SQL Truncate Staging_Permiso" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Carga de Tabla de Hechos.PrecedenceConstraints[Restricción 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{4e4f7509-4b2f-4f83-b639-c84fdf99dbfd}"
+          DTS:From="Package\Carga de Tabla de Hechos\SQL Truncate Staging_Permiso"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restricción 3"
+          DTS:To="Package\Carga de Tabla de Hechos\SQL Obtener la fecha de carga previa" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Carga de Tabla de Hechos.PrecedenceConstraints[Restricción 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{9D0711E7-86D3-4342-ABC2-4AA49AA7970F}"
+          DTS:From="Package\Carga de Tabla de Hechos\SQL Obtener la fecha de carga previa"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restricción 4"
+          DTS:To="Package\Carga de Tabla de Hechos\DF Probar Staging" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Carga de Tabla de Hechos.PrecedenceConstraints[Restricción 5]"
+          DTS:CreationName=""
+          DTS:DTSID="{FD694BA5-DF89-4B8F-9399-4E3FAFC5EF3F}"
+          DTS:From="Package\Carga de Tabla de Hechos\DF Probar Staging"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restricción 5"
+          DTS:To="Package\Carga de Tabla de Hechos\SQL Migrate Staging to Dimension" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción]"
+      DTS:CreationName=""
+      DTS:DTSID="{3FCBEB93-0E4B-4163-8A09-578F7704A838}"
+      DTS:From="Package\Carga de Dimension Empleado"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción"
+      DTS:To="Package\Carga de Dimension Permiso" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{4E182088-890A-4658-9CFD-A72E375FC6B9}"
+      DTS:From="Package\Carga de Dimension Permiso"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 1"
+      DTS:To="Package\Carga de Tabla de Hechos" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="204,42"
+          Id="Package\Carga de Dimension Empleado\Asignar Nombre de Tabla"
+          TopLeft="51.2142857142857,30.25" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Carga de Dimension Empleado\DF Probar Staging"
+          TopLeft="367.714285714286,138.928571428571" />
+        <NodeLayout
+          Size="212,42"
+          Id="Package\Carga de Dimension Empleado\Obtener la Fecha de Carga"
+          TopLeft="312.5,30.5" />
+        <NodeLayout
+          Size="248,42"
+          Id="Package\Carga de Dimension Empleado\SQL Migrate Staging to Dimension"
+          TopLeft="623.071428571429,143.928571428571" />
+        <NodeLayout
+          Size="264,42"
+          Id="Package\Carga de Dimension Empleado\SQL Obtener la fecha de carga previa"
+          TopLeft="41.5714285714286,134.678571428571" />
+        <NodeLayout
+          Size="243,42"
+          Id="Package\Carga de Dimension Empleado\SQL Truncate Staging_Empleado"
+          TopLeft="867.25,29.714285714286" />
+        <NodeLayout
+          Size="212,42"
+          Id="Package\Carga de Dimension Empleado\SQL Update Lineage Table"
+          TopLeft="592.25,30" />
+        <EdgeLayout
+          Id="Package\Carga de Dimension Empleado.PrecedenceConstraints[Restricción]"
+          TopLeft="255.214285714286,51.375">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="57.2857142857144,0"
+              Start="0,0"
+              End="49.7857142857144,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="49.7857142857144,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga de Dimension Empleado.PrecedenceConstraints[Restricción 1]"
+          TopLeft="524.5,51.25">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="67.7499999999999,0"
+              Start="0,0"
+              End="60.2499999999999,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="60.2499999999999,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga de Dimension Empleado.PrecedenceConstraints[Restricción 2]"
+          TopLeft="804.25,50.857142857143">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="63,0"
+              Start="0,0"
+              End="55.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="55.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga de Dimension Empleado.PrecedenceConstraints[Restricción 3]"
+          TopLeft="988.75,71.714285714286">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-815.178571428571,62.964285714285"
+              Start="0,0"
+              End="-815.178571428571,55.464285714285">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.4821428571425" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.4821428571425"
+                    Point2="0,31.4821428571425"
+                    Point3="-4,31.4821428571425" />
+                  <mssgle:LineSegment
+                    End="-811.178571428571,31.4821428571425" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-811.178571428571,31.4821428571425"
+                    Point2="-815.178571428571,31.4821428571425"
+                    Point3="-815.178571428571,35.4821428571425" />
+                  <mssgle:LineSegment
+                    End="-815.178571428571,55.464285714285" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga de Dimension Empleado.PrecedenceConstraints[Restricción 4]"
+          TopLeft="305.571428571429,157.803571428571">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="62.1428571428572,0"
+              Start="0,0"
+              End="54.6428571428572,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="54.6428571428572,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga de Dimension Empleado.PrecedenceConstraints[Restricción 5]"
+          TopLeft="537.714285714286,162.428571428571">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="85.3571428571429,0"
+              Start="0,0"
+              End="77.8571428571429,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="77.8571428571429,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="1160,210"
+          Size="1160,253"
+          Id="Package\Carga de Dimension Empleado"
+          TopLeft="126.388888888889,101.25" />
+        <NodeLayout
+          Size="204,42"
+          Id="Package\Carga de Dimension Permiso\Asignar Nombre de Tabla"
+          TopLeft="31.8531746031746,9.1269841269841" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Carga de Dimension Permiso\DF Probar Staging"
+          TopLeft="363.75,117.25" />
+        <NodeLayout
+          Size="212,42"
+          Id="Package\Carga de Dimension Permiso\Obtener la Fecha de Carga"
+          TopLeft="285.996031746032,13.3055555555561" />
+        <NodeLayout
+          Size="256,42"
+          Id="Package\Carga de Dimension Permiso\SQL Migrate Staging to Dimension"
+          TopLeft="583.638888888889,116.75" />
+        <NodeLayout
+          Size="264,42"
+          Id="Package\Carga de Dimension Permiso\SQL Obtener la fecha de carga previa"
+          TopLeft="35.3888888888889,115.75" />
+        <NodeLayout
+          Size="243,42"
+          Id="Package\Carga de Dimension Permiso\SQL Truncate Staging_Permiso"
+          TopLeft="864.888888888889,19.5" />
+        <NodeLayout
+          Size="212,42"
+          Id="Package\Carga de Dimension Permiso\SQL Update Lineage Table"
+          TopLeft="569.138888888889,15.305555555557" />
+        <EdgeLayout
+          Id="Package\Carga de Dimension Permiso.PrecedenceConstraints[Restricción]"
+          TopLeft="235.853174603175,32.2162698412701">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="50.1428571428573,0"
+              Start="0,0"
+              End="42.6428571428573,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="42.6428571428573,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga de Dimension Permiso.PrecedenceConstraints[Restricción 1]"
+          TopLeft="497.996031746032,35.3055555555566">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="71.142857142857,0"
+              Start="0,0"
+              End="63.642857142857,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="63.642857142857,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga de Dimension Permiso.PrecedenceConstraints[Restricción 2]"
+          TopLeft="781.138888888889,38.4027777777785">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="83.75,0"
+              Start="0,0"
+              End="76.25,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="76.25,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga de Dimension Permiso.PrecedenceConstraints[Restricción 3]"
+          TopLeft="986.388888888889,61.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-819,54.2500000000002"
+              Start="0,0"
+              End="-819,46.7500000000002">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.1250000000001" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.1250000000001"
+                    Point2="0,27.1250000000001"
+                    Point3="-4,27.1250000000001" />
+                  <mssgle:LineSegment
+                    End="-815,27.1250000000001" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-815,27.1250000000001"
+                    Point2="-819,27.1250000000001"
+                    Point3="-819,31.1250000000001" />
+                  <mssgle:LineSegment
+                    End="-819,46.7500000000002" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga de Dimension Permiso.PrecedenceConstraints[Restricción 4]"
+          TopLeft="299.388888888889,137.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="64.3611111111112,0"
+              Start="0,0"
+              End="56.8611111111112,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="56.8611111111112,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga de Dimension Permiso.PrecedenceConstraints[Restricción 5]"
+          TopLeft="533.75,138">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="49.8888888888888,0"
+              Start="0,0"
+              End="42.3888888888888,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="42.3888888888888,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="1155,183"
+          Size="1155,226"
+          Id="Package\Carga de Dimension Permiso"
+          TopLeft="136.138888888889,421.944444444445" />
+        <NodeLayout
+          Size="204,42"
+          Id="Package\Carga de Tabla de Hechos\Asignar Nombre de Tabla"
+          TopLeft="36.6388888888887,10.75" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Carga de Tabla de Hechos\DF Probar Staging"
+          TopLeft="361,119.5" />
+        <NodeLayout
+          Size="212,42"
+          Id="Package\Carga de Tabla de Hechos\Obtener la Fecha de Carga"
+          TopLeft="284.138888888889,14.0000000000005" />
+        <NodeLayout
+          Size="248,42"
+          Id="Package\Carga de Tabla de Hechos\SQL Migrate Staging to Dimension"
+          TopLeft="602.638888888889,120.944444444444" />
+        <NodeLayout
+          Size="264,42"
+          Id="Package\Carga de Tabla de Hechos\SQL Obtener la fecha de carga previa"
+          TopLeft="23.25,118.75" />
+        <NodeLayout
+          Size="243,42"
+          Id="Package\Carga de Tabla de Hechos\SQL Truncate Staging_Permiso"
+          TopLeft="876,23" />
+        <NodeLayout
+          Size="212,42"
+          Id="Package\Carga de Tabla de Hechos\SQL Update Lineage Table"
+          TopLeft="556.888888888889,20.000000000002" />
+        <EdgeLayout
+          Id="Package\Carga de Tabla de Hechos.PrecedenceConstraints[Restricción]"
+          TopLeft="240.638888888889,33.3750000000002">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="43.5000000000003,0"
+              Start="0,0"
+              End="36.0000000000003,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="36.0000000000003,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga de Tabla de Hechos.PrecedenceConstraints[Restricción 1]"
+          TopLeft="496.138888888889,38.0000000000013">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="60.7499999999997,0"
+              Start="0,0"
+              End="53.2499999999997,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="53.2499999999997,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga de Tabla de Hechos.PrecedenceConstraints[Restricción 2]"
+          TopLeft="768.888888888889,42.500000000001">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="107.111111111111,0"
+              Start="0,0"
+              End="99.6111111111113,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="99.6111111111113,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga de Tabla de Hechos.PrecedenceConstraints[Restricción 3]"
+          TopLeft="997.5,65">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-842.25,53.75"
+              Start="0,0"
+              End="-842.25,46.25">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.875" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.875"
+                    Point2="0,26.875"
+                    Point3="-4,26.875" />
+                  <mssgle:LineSegment
+                    End="-838.25,26.875" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-838.25,26.875"
+                    Point2="-842.25,26.875"
+                    Point3="-842.25,30.875" />
+                  <mssgle:LineSegment
+                    End="-842.25,46.25" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga de Tabla de Hechos.PrecedenceConstraints[Restricción 4]"
+          TopLeft="287.25,140.125">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="73.7500000000001,0"
+              Start="0,0"
+              End="66.2500000000001,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="66.2500000000001,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga de Tabla de Hechos.PrecedenceConstraints[Restricción 5]"
+          TopLeft="531,141.222222222222">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="71.6388888888888,0"
+              Start="0,0"
+              End="64.1388888888888,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="64.1388888888888,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="1156,187"
+          Size="1156,230"
+          Id="Package\Carga de Tabla de Hechos"
+          TopLeft="138.25,709.75" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="710.013888888889,354.25">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,67.6944444444446"
+              Start="0,0"
+              End="0,60.1944444444446">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,60.1944444444446" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 1]"
+          TopLeft="714.944444444445,647.944444444445">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61.8055555555554"
+              Start="0,0"
+              End="0,54.3055555555554">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.3055555555554" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Carga de Dimension Empleado\DF Probar Staging">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB"
+          TopLeft="74,208" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB"
+          TopLeft="356,217" />
+        <EdgeLayout
+          Id="Package\Carga de Dimension Empleado\DF Probar Staging.Paths[Salida de origen de OLE DB]"
+          TopLeft="244,229">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="112,9"
+              Start="0,0"
+              End="104.5,9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="52,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="52,0"
+                    Point2="56,0"
+                    Point3="56,4" />
+                  <mssgle:LineSegment
+                    End="56,5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="56,5"
+                    Point2="56,9"
+                    Point3="60,9" />
+                  <mssgle:LineSegment
+                    End="104.5,9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Carga de Dimension Permiso\DF Probar Staging">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Carga de Dimension Permiso\DF Probar Staging\Destino de OLE DB"
+          TopLeft="724,145" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB"
+          TopLeft="449,120" />
+        <EdgeLayout
+          Id="Package\Carga de Dimension Permiso\DF Probar Staging.Paths[Salida de origen de OLE DB]"
+          TopLeft="619,141">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="105,25"
+              Start="0,0"
+              End="97.5,25">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="48.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="48.5,0"
+                    Point2="52.5,0"
+                    Point3="52.5,4" />
+                  <mssgle:LineSegment
+                    End="52.5,21" />
+                  <mssgle:CubicBezierSegment
+                    Point1="52.5,21"
+                    Point2="52.5,25"
+                    Point3="56.5,25" />
+                  <mssgle:LineSegment
+                    End="97.5,25" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga de Dimension Permiso\DF Probar Staging\Destino de OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga de Dimension Permiso\DF Probar Staging\Origen de OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Carga de Tabla de Hechos\DF Probar Staging">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB"
+          TopLeft="749,184" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB"
+          TopLeft="463,178" />
+        <EdgeLayout
+          Id="Package\Carga de Tabla de Hechos\DF Probar Staging.Paths[Salida de origen de OLE DB]"
+          TopLeft="633,202">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="116,0"
+              Start="0,0"
+              End="108.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="108.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga de Tabla de Hechos\DF Probar Staging\Destino de OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga de Tabla de Hechos\DF Probar Staging\Origen de OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
