@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="118"
-  DTS:VersionGUID="{84336992-0766-4CBD-986D-2A1FAD279F11}">
+  DTS:VersionBuild="119"
+  DTS:VersionGUID="{D8448BEE-3D52-4BA7-9357-76602F7D3CE4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -290,7 +290,8 @@
                           name="NumeroCedula" />
                         <externalMetadataColumn
                           refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[NumeroINSS]"
-                          dataType="i4"
+                          dataType="wstr"
+                          length="11"
                           name="NumeroINSS" />
                         <externalMetadataColumn
                           refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[PrimerNombre]"
@@ -330,7 +331,8 @@
                           name="Sexo" />
                         <externalMetadataColumn
                           refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Telefono]"
-                          dataType="i4"
+                          dataType="wstr"
+                          length="13"
                           name="Telefono" />
                         <externalMetadataColumn
                           refId="Package\Carga de Dimension Empleado\DF Probar Staging\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Email]"
@@ -406,14 +408,14 @@ WITH RESULT SETS
         [EmpleadoKey] [int], 
 	[_SourceEmpleadosKey] [nvarchar](50), 
 	[NumeroCedula] [char](16), 
-	[NumeroINSS] [int], 
+	[NumeroINSS] [nvarchar], 
 	[PrimerNombre] [varchar](20), 
 	[SegundoNombre] [varchar](20), 
 	[PrimerApellido] [varchar](20), 
 	[SegundoApellido] [varchar](20), 
 	[Direccion] [varchar](30), 
 	[Sexo] [char](1), 
-	[Telefono] [int], 
+	[Telefono] [nvarchar], 
 	[Email] [varchar](50), 
 	[ValidFrom] [datetime], 
 	[ValidTo] [datetime]
@@ -617,7 +619,8 @@ WITH RESULT SETS
                           name="NumeroCedula" />
                         <externalMetadataColumn
                           refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[NumeroINSS]"
-                          dataType="i4"
+                          dataType="wstr"
+                          length="1"
                           name="NumeroINSS" />
                         <externalMetadataColumn
                           refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[PrimerNombre]"
@@ -657,7 +660,8 @@ WITH RESULT SETS
                           name="Sexo" />
                         <externalMetadataColumn
                           refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[Telefono]"
-                          dataType="i4"
+                          dataType="wstr"
+                          length="1"
                           name="Telefono" />
                         <externalMetadataColumn
                           refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[Email]"
@@ -700,7 +704,8 @@ WITH RESULT SETS
                           name="NumeroCedula" />
                         <outputColumn
                           refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[NumeroINSS]"
-                          dataType="i4"
+                          dataType="wstr"
+                          length="1"
                           lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[NumeroINSS]"
                           name="NumeroINSS" />
                         <outputColumn
@@ -747,7 +752,8 @@ WITH RESULT SETS
                           name="Sexo" />
                         <outputColumn
                           refId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[Telefono]"
-                          dataType="i4"
+                          dataType="wstr"
+                          length="1"
                           lineageId="Package\Carga de Dimension Empleado\DF Probar Staging\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[Telefono]"
                           name="Telefono" />
                         <outputColumn
